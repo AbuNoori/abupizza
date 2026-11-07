@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root{
+  --blue:#0b3d91; --navy:#0a2468; --orange:#ff6b00;
+  --bg:#f5f7fb; --card:#fff; --line:#e0e5ee; --ink:#14213d; --mute:#5b6577;
+  --red:#c62828; --redbg:#fde8e8; --amber:#8a5a00; --amberbg:#fdf0cf;
+  --ok:#17743f; --okbg:#e0f3e8; --bluebg:#dce8fb; --side:280px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Barlow Semi Condensed","IBM Plex Sans",system-ui,sans-serif;margin:0;color:var(--ink)}
+h2{font-size:24px;font-weight:700}
+h3{font-size:19px;font-weight:700}
+a{color:var(--blue)}
+p{margin:0}
+.mute{color:var(--mute)}
+.hint{color:var(--mute);font-size:13px}
+.err{color:var(--red);font-size:14px;margin-top:10px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+
+/* ---------- Gerüst: Seitenleiste + Inhalt ---------- */
+.shell{display:grid;grid-template-columns:var(--side) minmax(0,1fr);min-height:100vh}
+.side{background:var(--blue);color:#fff;padding:22px 16px 20px;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:14px;padding:0 8px}
+.brand svg{width:62px;height:62px;flex:none}
+.logo{font:600 32px/1 "Barlow Semi Condensed",sans-serif;letter-spacing:.38em}
+.tag{font-size:14px;color:#cfe0ff;padding:10px 8px 20px}
+.side nav{display:flex;flex-direction:column;gap:2px;flex:1}
+.side nav a{display:flex;align-items:center;justify-content:space-between;color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:12px 14px;border-radius:8px;border-left:4px solid transparent}
+.side nav a:hover{background:#ffffff1f}
+.side nav a.active{background:var(--navy);border-left-color:var(--orange)}
+.navsep{font-size:13px;color:#9db8ee;padding:16px 14px 4px}
+.badge{background:var(--orange);color:var(--ink);font-weight:700;font-size:13px;min-width:26px;height:26px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;padding:0 7px}
+.me{font-size:14px;color:#cfe0ff;padding:16px 8px 10px}
+.me b{color:#fff}
+.side .out{background:transparent;color:#fff;border-color:#ffffff88;align-self:flex-start}
+.side .out:hover{background:#ffffff22;border-color:#fff}
+.main{padding:28px 36px 60px;min-width:0}
+.top{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.ttl{flex:1;min-width:240px}
+.ttl h1{font-size:40px;line-height:1.1;font-weight:700}
+.ttl p{margin-top:6px;color:var(--mute)}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+.menubtn{display:none;border:1px solid var(--line);background:#fff;border-radius:8px;width:44px;height:44px;font-size:22px;cursor:pointer;color:var(--blue)}
+.scrim{display:none}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:#fff;color:var(--blue);border-radius:8px;padding:9px 16px;font:600 14px "IBM Plex Sans",sans-serif;cursor:pointer;text-decoration:none;line-height:1.3}
+.btn:hover{border-color:var(--blue)}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.pri:hover{background:var(--navy)}
+.btn.red{color:var(--red);border-color:#f0b9b9}
+.btn.sm{padding:5px 10px;font-size:13px}
+.btn.block{width:100%}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.seg a{padding:8px 14px;text-decoration:none;color:var(--blue);font-weight:600;font-size:14px;border-right:1px solid var(--line)}
+.seg a:last-child{border-right:0}
+.seg a.on{background:var(--blue);color:#fff}
+
+/* ---------- Karten, Kennzahlen, Listen ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.card + .card{margin-top:18px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.cols .card + .card{margin-top:0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:22px}
+.kpi{display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;text-decoration:none;color:var(--ink)}
+.kpi:hover{border-color:var(--blue)}
+.kpi b{display:block;font:700 44px/1.05 "Barlow Semi Condensed",sans-serif}
+.kpi span{color:var(--mute)}
+.kpi.late b{color:var(--red)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.panel > header{display:flex;justify-content:space-between;align-items:baseline;padding:18px 20px 14px;border-bottom:1px solid var(--line)}
+.panel > .empty{padding:22px 20px;color:var(--mute)}
+.todo{display:flex;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.todo:last-child,.ev:last-child{border-bottom:0}
+.dot{flex:none;width:12px;height:12px;border-radius:50%;margin-top:7px;background:var(--amber)}
+.dot.red{background:var(--red)}
+.ev{display:flex;gap:18px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.evd{flex:none;width:76px}
+.evd b{display:block;font:600 19px/1.2 "Barlow Semi Condensed",sans-serif}
+.evd small{color:var(--mute)}
+.evb{min-width:0}
+
+/* ---------- Kennzeichen, Status ---------- */
+.plate{display:inline-flex;align-items:stretch;border:2px solid var(--navy);border-radius:5px;background:#fff;overflow:hidden;vertical-align:middle;white-space:nowrap}
+.plate i{display:block;width:9px;background:var(--blue)}
+.plate b{font:700 13px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.06em;color:var(--navy);padding:5px 7px}
+.chip{display:inline-block;padding:2px 11px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap}
+.c-ok{background:var(--okbg);color:var(--ok)}
+.c-warn{background:var(--amberbg);color:var(--amber)}
+.c-red{background:var(--redbg);color:var(--red)}
+.c-blue{background:var(--bluebg);color:var(--blue)}
+
+/* ---------- Tabellen ---------- */
+.wrap{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:middle}
+th{font-size:13px;color:var(--mute);font-weight:600;background:#fafbfd}
+th[data-k]{cursor:pointer;user-select:none}
+th[data-k]:hover{color:var(--ink)}
+tbody tr:last-child td{border-bottom:0}
+tbody tr.click{cursor:pointer}
+tbody tr.click:hover{background:var(--bg)}
+td .small{display:block;color:var(--mute);font-size:12px}
+td.late,.late{color:var(--red);font-weight:600}
+.wrap table.wide{min-width:1700px}
+.wrap table.mid{min-width:900px}
+.filters{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-bottom:16px}
+.filters label{margin:0;min-width:160px}
+.filters .grow{flex:1;min-width:200px}
+
+/* ---------- Formulare ---------- */
+label{display:block;font-size:13px;color:var(--mute);margin-bottom:12px;font-weight:500}
+input,select,textarea{display:block;width:100%;margin-top:4px;border:1px solid #c9d1e0;background:#fff;border-radius:8px;padding:9px 11px;font:15px "IBM Plex Sans",sans-serif;color:var(--ink)}
+textarea{resize:vertical}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0 18px}
+.formcard{max-width:860px}
+.checkrow{display:flex;align-items:center;gap:8px;color:var(--ink);font-size:14px;margin:0}
+.checkrow input{width:auto;margin:0}
+
+/* ---------- Detailseite ---------- */
+.steps{display:flex;gap:8px;flex-wrap:wrap}
+.step{font-size:13px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--mute)}
+.step.done{background:var(--okbg);color:var(--ok);border-color:#b7dfc6}
+.step.cur{background:var(--bluebg);color:var(--blue);border-color:var(--blue);font-weight:600}
+dl.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px 18px;margin:12px 0 0}
+dl.info div{padding:7px 0;border-bottom:1px solid var(--line)}
+dl.info dt{font-size:12px;color:var(--mute)}
+dl.info dd{margin:0;font-size:15px}
+pre.mail{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:14px;white-space:pre-wrap;font:14px/1.55 "IBM Plex Sans",sans-serif;margin:12px 0}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.box{border-radius:8px;padding:12px 14px;margin:12px 0}
+.box.ok{background:var(--okbg);color:var(--ok)}
+.box.warn{background:var(--amberbg);color:var(--amber)}
+.box.bad{background:var(--redbg);color:var(--red)}
+.box.info{background:var(--bluebg);color:var(--blue)}
+.pw{font:700 22px "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.12em;color:var(--ink);background:#fff;border:1px dashed var(--ok);border-radius:8px;padding:6px 12px;display:inline-block;margin:6px 0}
+.hist{list-style:none;margin:12px 0 0;padding:0}
+.hist li{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
+.hist li:last-child{border-bottom:0}
+.hist small{display:block;color:var(--mute)}
+
+/* ---------- Anmeldung ---------- */
+.login-body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(160deg,#0b3d91 0%,#0a2468 100%)}
+.login-box{width:100%;max-width:400px;background:#fff;border-radius:14px;padding:30px;box-shadow:0 20px 50px #0005}
+.login-box .brand{padding:0;margin-bottom:6px}
+.login-box .logo{color:var(--blue)}
+.login-box h1{font-size:30px;margin:18px 0 14px}
+
+/* ---------- Schmale Bildschirme ---------- */
+@media (max-width:1100px){
+  .cols{grid-template-columns:1fr}
+  .main{padding:24px 22px 50px}
+}
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .side{position:fixed;left:0;top:0;bottom:0;width:min(300px,86vw);z-index:30;transform:translateX(-100%);transition:transform .2s}
+  .shell.open .side{transform:none}
+  .shell.open .scrim{display:block;position:fixed;inset:0;background:#0007;z-index:20}
+  .menubtn{display:inline-flex;align-items:center;justify-content:center}
+  .main{padding:18px 16px 44px}
+  .ttl h1{font-size:32px}
+}
+@media (prefers-reduced-motion:reduce){.side{transition:none}}
+
+/* Buchung / Kalender */
+.plate.none{border-style:dashed;border-color:var(--mute,#8a94a6)}
+.plate.none b{font-weight:500;color:#6b7686;font-family:inherit;letter-spacing:0}
+.calnav{display:flex;gap:10px;align-items:center;margin:12px 0}
+.slotgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.slotday{background:#fff;border:1px solid #d9dee7;border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:6px}
+.slotdh{font-weight:700;font-size:13px;margin-bottom:2px}
+.slot{border:1px solid #b9c3d3;background:#fff;border-radius:6px;padding:7px 4px;cursor:pointer;font:600 13px inherit;text-align:center}
+.slot small{display:block;font-weight:400;font-size:11px;color:#6b7686}
+.slot:hover{border-color:var(--blue,#1b6ac9)}
+.slot.on{background:var(--blue,#1b6ac9);color:#fff;border-color:var(--blue,#1b6ac9)}
+.slot.on small{color:#e6efff}
+.slot:disabled{background:#f1f3f7;color:#9aa4b3;cursor:not-allowed;text-decoration:line-through}
+.calweek{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:12px}
+.calday{background:#fff;border:1px solid #d9dee7;border-radius:8px;padding:10px;min-height:120px}
+.calday.today{border-color:var(--blue,#1b6ac9);box-shadow:0 0 0 2px rgba(27,106,201,.15)}
+.caldh{font-weight:700;font-size:13px;margin-bottom:8px}
+.calev{display:block;font-size:12.5px;border-left:3px solid var(--blue,#1b6ac9);background:#f3f7fd;padding:5px 7px;border-radius:4px;margin-bottom:6px;color:inherit;text-decoration:none}
+.book-body{background:#f3f5f9;min-height:100vh}
+.book-wrap{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.book-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.book-head svg{width:56px;height:56px;flex:none}
+@media(max-width:760px){.slotgrid,.calweek{grid-template-columns:1fr}}
